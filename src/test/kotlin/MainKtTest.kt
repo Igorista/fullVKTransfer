@@ -7,31 +7,31 @@ class MainKtTest {
     @Test
     fun commisionCountTestMAESTRO() {
         val expected : Int = 8000
-        val result = commisionCount(MAESTRO, 8000000, 10000, MIR)
+        val result = commissionCount("MAESTRO", 8000000, 10000)
         assertEquals(expected, result)
     }
     @Test
     fun commisionCountTestMASTERCARD() {
         val expected : Int = 0
-        val result = commisionCount(MASTERCARD, 0, 10000, MIR)
+        val result = commissionCount("MASTERCARD", 0, 10000)
         assertEquals(expected, result)
     }
     @Test
     fun commisionCountTestVISA() {
         val expected : Int = 7500
-        val result = commisionCount(VISA, 0, 10000, MASTERCARD)
+        val result = commissionCount("VISA", 0, 10000)
         assertEquals(expected, result)
     }
     @Test
     fun commisionCountTestVKPAY() {
-        val expected : Int = 100
-        val result = commisionCount(VISA, 0, 10000, VKPAY)
+        val expected : Int = 0
+        val result = commissionCount("VKPay", 0, 10000)
         assertEquals(expected, result)
     }
     @Test
     fun commisionCountTestMirMin() {
         val expected : Int = 3500
-        val result = commisionCount(MIR, 0, 1000, MASTERCARD)
+        val result = commissionCount("MIR", 0, 1000)
         assertEquals(expected, result)
     }
 }

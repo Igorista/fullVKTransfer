@@ -1,27 +1,24 @@
-const val VISA: String = "VISA"
-const val MIR: String = "MIR"
-const val MAESTRO: String = "MAESTRO"
-const val MASTERCARD: String = "MASTERCARD"
-const val VKPAY: String = "VKPAY"
-
 fun main(args: Array<String>) {
-    println("Коммиссия за перевод составляет ${commisionCount("MASTERCARD", 0, 10000, "asd")} копеек")
+    val payMethod : String = "MIR"
+    val monthTransfer : Int = 8000000
+    val currentTransfer : Int = 10000
+    println("Коммиссия за перевод составляет ${commissionCount(payMethod, monthTransfer, currentTransfer)} копеек")
 }
 
-fun commisionCount(payMethod: String, monthTransfer: Int, currenttransferRub: Int, whereTopay: String): Int {
+fun commissionCount(payMethod: String = "VKPay", monthTransfer: Int = 0, currentTransfer: Int): Int {
 
-    val transferKop: Int = currenttransferRub * 100
-    val mincommisionVisaMir: Int = 3500
-    val visamirComm = when (true) {
-        mincommisionVisaMir >= transferKop * 75/10000 -> mincommisionVisaMir
-        else -> transferKop * 75 / 10000
+    val rubbleToKop: Int = currentTransfer * 100
+    val mincommissionVisaMir: Int = 3500
+    val visamirComm = when {
+        mincommissionVisaMir >= rubbleToKop * 75/10000 -> mincommissionVisaMir
+        else -> rubbleToKop * 75 / 10000
     }
-    var commisionResult = when (true) {
-        whereTopay == VKPAY -> 0
+    var commisionResult = when {
+        payMethod == "VKPay" -> 0
         else ->
-            when (true) {
-                payMethod == VISA || payMethod == MIR -> visamirComm
-                payMethod == MAESTRO || payMethod == MASTERCARD && monthTransfer > 7_500_000 -> transferKop * 60 / 10000 + 2000
+            when {
+                payMethod == "VISA" || payMethod == "MIR" -> visamirComm
+                payMethod == "MAESTRO" || payMethod == "MASTERCARD" && monthTransfer > 7_500_000 -> rubbleToKop * 60 / 10000 + 2000
                 else -> 0
             }
     }
