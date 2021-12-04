@@ -24,7 +24,7 @@ class MainKtTest {
     }
     @Test
     fun commisionCountTestVKPAY() {
-        val expected : Int = 0
+        val expected : Int = 100
         val result = commisionCount(VISA, 0, 10000, VKPAY)
         assertEquals(expected, result)
     }
