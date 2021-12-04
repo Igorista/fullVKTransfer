@@ -5,12 +5,12 @@ const val MASTERCARD: String = "MASTERCARD"
 const val VKPAY: String = "VKPAY"
 
 fun main(args: Array<String>) {
-    println("Коммиссия за перевод составляет ${commisionCount("MASTERCARD", 9000000, 5000, "asd")} копеек")
+    println("Коммиссия за перевод составляет ${commisionCount("MASTERCARD", 0, 10000, "asd")} копеек")
 }
 
-fun commisionCount(payMethod: String, monthTransfer: Int, currenttranserRub: Int, whereTopay: String): Int {
+fun commisionCount(payMethod: String, monthTransfer: Int, currenttransferRub: Int, whereTopay: String): Int {
 
-    val transferKop: Int = currenttranserRub * 100
+    val transferKop: Int = currenttransferRub * 100
     val mincommisionVisaMir: Int = 3500
     val visamirComm = when (true) {
         mincommisionVisaMir >= transferKop * 75/10000 -> mincommisionVisaMir
