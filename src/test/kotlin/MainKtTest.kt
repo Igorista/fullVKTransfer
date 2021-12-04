@@ -12,7 +12,7 @@ class MainKtTest {
     }
     @Test
     fun commisionCountTestMASTERCARD() {
-        val expected : Int = 0
+        val expected : Int = 100
         val result = commissionCount("MASTERCARD", 0, 10000)
         assertEquals(expected, result)
     }
